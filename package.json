@@ -1,0 +1,19 @@
+{
+  "name": "Blockchain",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "sha1": "^1.1.1"
+  },
+  "scripts": {
+    "server": "node server.js",
+    "watch": "yarn webpack -w"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^3.0.6",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12"
+  }
+}
