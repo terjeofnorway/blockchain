@@ -1,5 +1,4 @@
 import sha1 from 'sha1';
-// import moment from '../node_modules/moment/moment.js';
 
 class Block {
   constructor(previousHash = '', content = {}, position = 0, difficulty = ''){
@@ -25,11 +24,9 @@ class Block {
     let nonce = 0;
 
     while (!this.hashMeetsDifficulty(hash)) {
-      hash = this.calculateHash(nonce);
       nonce += 1;
+      hash = this.calculateHash(nonce);
     };
-
-    nonce -= 1;
 
     this.hash = hash;
     return nonce;
@@ -40,8 +37,7 @@ class Block {
   }
 
   isBlockValid() {
-    const hashIsTheSame = this.calculateHash(this.nonce) === this.hash;
-    return hashIsTheSame;
+    return this.calculateHash(this.nonce) === this.hash;
   }
 
   getMeta() {
@@ -50,7 +46,6 @@ class Block {
       position: this.position,
       previousHash: this.previousHash,
       hash: this.hash,
-      index: this.index,
       nonce: this.nonce,
     }
   }

@@ -13,10 +13,6 @@ class Chain {
     this.starTrekPosterChain.push(block);
   }
 
-  validateChain(){
-    return this.getAllBlocks().every(block => block.isBlockValid());
-  }
-
   getLatestBlock() {
     return this.starTrekPosterChain.length > 0 ? this.starTrekPosterChain[this.starTrekPosterChain.length - 1] : false;
   }

@@ -4,6 +4,8 @@ const createChain = () => {
   window.mySalesChain = new Chain();
 };
 
+let chainIsBroken = false;
+
 const createFirstBlocks = async () => {
   mySalesChain.addNewBlock({from: 'Dina', to: 'Dave', sales: 5000});
   await sleep(100);
@@ -31,9 +33,7 @@ const updateChainView = () => {
     view.removeChild(view.firstChild);
   }
 
-  if(!window.mySalesChain.validateChain()){
-    //console.log('falsehood!!!')
-  }
+  chainIsBroken = false;
 
   chain.getAllBlocks().forEach(block => {
     view.appendChild(createBlockView(block));
@@ -44,8 +44,11 @@ const updateChainView = () => {
 
 const createBlockView = block => {
   const blockView = document.createElement('div');
+  const blockIsValid = block.isBlockValid();
 
-  blockView.className = `block ${!block.isBlockValid() && 'block--error'}`;
+  if(!blockIsValid) { chainIsBroken = true};
+
+  blockView.className = `block ${chainIsBroken && 'block--error'}`;
 
   const blockMeta = block.getMeta();
   const blockContent = block.getContent();
@@ -59,7 +62,7 @@ const createBlockView = block => {
   blockView.appendChild(createAttribute('nonce', blockMeta.nonce, '#545b75'));
 
   const contentWrapper = document.createElement('div');
-  const blockViewContent = Object.keys(blockContent).map(key => {
+  Object.keys(blockContent).forEach(key => {
     const value = blockContent[key];
     contentWrapper.className = 'block__contentwrapper';
     contentWrapper.append(createAttribute(key, value));
