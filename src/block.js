@@ -6,15 +6,19 @@ class Block {
     this.previousHash = previousHash;
     this.content = content;
     this.position = position;
-    this.hash = null;
+    this.hash = this.calculateHash();
   }
 
   getHash() {
     return this.hash;
   }
 
-  calculateHash(nonce = this.nonce) {
+  calculateHash() {
     return sha1(this.creationDate + this.previousHash + JSON.stringify(this.content));
+  }
+
+  isBlockValid() {
+    return true;
   }
 
   getMeta() {
