@@ -23,6 +23,7 @@ class Block {
     let hash = '';
     let nonce = 0;
 
+    // Keep going until difficulty criteria are met.
     while (!this.hashMeetsDifficulty(hash)) {
       nonce += 1;
       hash = this.calculateHash(nonce);
