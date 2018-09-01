@@ -1,7 +1,7 @@
 var express = require('express');
 var path = require('path');
 var app = express();
-var public = __dirname + "/";
+var public = __dirname + "/dist/";
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(public + 'index.html'));
