@@ -1,12 +1,11 @@
 const express = require('express');
 const path = require('path');
 
-const publicDir = `${__dirname}/dist`;
-const index = `${publicDir}/index.html`;
+const publicDir = path.join(__dirname, 'public');
 
 const PORT = process.env.PORT || 5000;
 
 express()
-  .use(express.static(path.join(__dirname, 'dist')))
-  .get('/', (req, res) => res.sendFile(index))
+  .use(express.static(publicDir))
+  .get('/', (req, res) => res.sendFile('index.html'))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
