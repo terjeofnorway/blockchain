@@ -1,4 +1,4 @@
-import Chain from './components/chain.js';
+import Chain from './components/chain';
 
 const createChain = () => {
   window.mySalesChain = new Chain();
