@@ -20,6 +20,7 @@ const createFirstBlocks = async (mySalesChain) => {
 };
 
 const drawChainView = (chain) => {
+  setTimeout(() => drawChainView(chain), 500);
   if (previousChain === JSON.stringify(chain.getAllBlocks())) return;
 
   const view = document.getElementById('blockchain');
@@ -34,7 +35,6 @@ const drawChainView = (chain) => {
   });
 
   previousChain = JSON.stringify(chain.getAllBlocks());
-  setTimeout(() => drawChainView(chain), 500);
 };
 
 
