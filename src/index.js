@@ -37,7 +37,6 @@ const drawChainView = (chain) => {
   previousChain = JSON.stringify(chain.getAllBlocks());
 };
 
-
 const mySalesChain = createChain();
 drawChainView(mySalesChain);
-setTimeout(() => createFirstBlocks(mySalesChain), 500);
+createFirstBlocks(mySalesChain);

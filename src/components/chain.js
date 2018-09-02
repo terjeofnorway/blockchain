@@ -3,10 +3,11 @@ import Block from './block';
 class Chain {
   constructor() {
     this.blockChain = [];
+    this.DIFFICULTY = '1234';
   }
 
   addNewBlock(salesInfo) {
-    const firstNumbersInHash = '123';
+    const firstNumbersInHash = this.DIFFICULTY;
 
     // If there are no blocks in the chain, this is the genesis block and hence, no previous hash.
     const latestBlockInChain = this.getLatestBlock();
