@@ -3,16 +3,16 @@ const webpackConfig = require('./webpack.config');
 
 module.exports = merge(webpackConfig, {
 
-    devtool: 'eval',
+  devtool: 'source-map',
 
-    output: {
-        pathinfo: true,
-        publicPath: '/',
-        filename: '[name].js'
-    },
+  output: {
+    pathinfo: true,
+    publicPath: '/',
+    filename: '[name].js',
+  },
 
-    devServer: {
-        host: '0.0.0.0'
-    }
+  devServer: {
+    host: '0.0.0.0',
+  },
 
 });

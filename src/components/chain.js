@@ -5,8 +5,8 @@ class Chain {
     this.blockChain = [];
   }
 
-  addNewBlock(salesInfo){
-    const firstNumbersInHash = '12345';
+  addNewBlock(salesInfo) {
+    const firstNumbersInHash = '123';
 
     // If there are no blocks in the chain, this is the genesis block and hence, no previous hash.
     const latestBlockInChain = this.getLatestBlock();
@@ -23,7 +23,7 @@ class Chain {
     return this.blockChain.length > 0 ? this.blockChain[this.blockChain.length - 1] : false;
   }
 
-  getAllBlocks(){
+  getAllBlocks() {
     return this.blockChain;
   }
 }

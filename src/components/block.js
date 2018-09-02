@@ -1,7 +1,7 @@
 import sha1 from 'sha1';
 
 class Block {
-  constructor(previousHash = '', content = {}, position = 0, difficulty = ''){
+  constructor(previousHash = '', content = {}, position = 0, difficulty = '') {
     this.difficulty = difficulty;
     this.creationDate = Date.now();
     this.previousHash = previousHash;
@@ -19,7 +19,7 @@ class Block {
     return hash.substring(0, this.difficulty.length) === this.difficulty;
   }
 
-  mineNonce(){
+  mineNonce() {
     let hash = '';
     let nonce = 0;
 
@@ -27,14 +27,14 @@ class Block {
     while (!this.hashMeetsDifficulty(hash)) {
       nonce += 1;
       hash = this.calculateHash(nonce);
-    };
+    }
 
     this.hash = hash;
     return nonce;
   }
 
   calculateHash(nonce = this.nonce) {
-    return sha1(`${nonce}` + this.creationDate + this.previousHash + JSON.stringify(this.content));
+    return sha1(`${nonce} ${this.creationDate} ${this.previousHash} ${JSON.stringify(this.content)}`);
   }
 
   isBlockValid() {
@@ -48,13 +48,12 @@ class Block {
       previousHash: this.previousHash,
       hash: this.hash,
       nonce: this.nonce,
-    }
+    };
   }
 
-  getContent(){
+  getContent() {
     return this.content;
   }
-
 }
 
 export default Block;
